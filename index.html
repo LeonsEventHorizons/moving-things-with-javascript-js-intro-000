@@ -1,16 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Rock Dodger! (Beta)</title>
     <link rel="stylesheet" type="text/css" href="index.css">
-  </head>
+</head>
 
-  <body>
+<body>
     <div id="game">
-      <div id="dodger" style="bottom: 0px; left: 180px;"></div>
+        <div id="dodger" style="bottom: 0px; left: 180px;"></div>
     </div>
     <script>
-      // your code here
+        var dodger = document.getElementById('dodger');
+        dodger.style.backgroundColor = "#FF69B4";
+        dodger.style.left = "100px";
+        dodger.style.bottom = "200px";
+
+
+        //        //        Use this to check the number of a key press. Helpful for finding that comparison number.
+        //        document.addEventListener('keydown', function(e) {
+        //            alert("You pressed: " + e.which);
+        //        });
+
+        function doLeft() {
+            var stripPX = dodger.style.left.replace("px", "");
+            var doInteger = parseInt(stripPX, 10);
+
+            if (doInteger > 0) {
+                dodger.style.left = `${doInteger - 15}px`;
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.which === 37) {
+                doLeft();
+            }
+        });
+
+
+        function doRight() {
+            var stripPX = dodger.style.left.replace("px", "");
+            var doInteger = parseInt(stripPX, 10);
+            dodger.style.left = `${doInteger + 15}px`;
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.which === 39) {
+                doRight();
+            }
+        });
+
     </script>
-  </body>
+</body>
+
 </html>
